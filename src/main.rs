@@ -26,14 +26,10 @@ impl Render for HelloWorld {
 }
 
 fn main() {
-    application()
-        .with_assets(assets::Assets)
-        .run(|cx| {
-            init(cx);
+    application().with_assets(assets::Assets).run(|cx| {
+        init(cx);
 
-            open_window(WindowOptions::default(), cx, |_, cx| {
-                cx.new(|_| HelloWorld)
-            })
+        open_window(WindowOptions::default(), cx, |_, cx| cx.new(|_| HelloWorld))
             .expect("Failed to open window");
-        });
+    });
 }
